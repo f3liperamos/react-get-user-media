@@ -1,0 +1,42 @@
+{
+  "name": "user-media-hoc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_PATH=./ parcel samples.html",
+    "build": "NODE_PATH=./ parcel build src",
+    "test": "NODE_PATH=./ jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "audio-recorder-polyfill": "^0.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "webrtc-adapter": "^6.2.1"
+  },
+  "devDependencies": {
+    "babel-preset-react-app": "^3.1.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^23.1.0",
+    "parcel-bundler": "^1.9.1",
+    "standard": "^11.0.1"
+  },
+  "standard": {
+    "globals": [
+      "atob",
+      "Blob"
+    ]
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/test/enzymeSetup.js",
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/samples/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/coverage/"
+    ]
+  }
+}

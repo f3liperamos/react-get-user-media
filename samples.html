@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <style media="screen">
+      * {
+        box-sizing: border-box;
+      }
+
+      .buttonBox {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .videoBox {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+        flex-flow: column;
+      }
+
+      .videoBox > * {
+        margin-top: 30px;
+        flex: 1 1 auto;
+        /* max-width: 384px;
+        height: 270px; */
+        border: 1px solid gray;
+      }
+
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="samples/index.js" charset="utf-8"></script>
+  </body>
+</html>
