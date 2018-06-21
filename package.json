@@ -1,8 +1,8 @@
 {
   "name": "user-media-hoc",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "NODE_PATH=./ parcel samples.html",
     "build": "NODE_PATH=./ parcel build src",
@@ -12,17 +12,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "audio-recorder-polyfill": "^0.1.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "audio-recorder-polyfill": "^0.1.2",
     "webrtc-adapter": "^6.2.1"
+  },
+  "peerDependencies": {
+    "react": ">=15.0.0",
+    "react-dom": ">=15.0.0"
   },
   "devDependencies": {
     "babel-preset-react-app": "^3.1.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^23.1.0",
-    "parcel-bundler": "^1.9.1",
+    "parcel-bundler": "^1.9.2",
     "standard": "^11.0.1"
   },
   "standard": {
