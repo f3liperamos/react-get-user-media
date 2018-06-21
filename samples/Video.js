@@ -16,8 +16,6 @@ const RecordVideo = ({ getUserMedia, permitted, startRecording, stopRecording, r
     return 'Stop Recording'
   }
 
-  stopStream()
-
   return (
     <React.Fragment>
       <h1>Video</h1>

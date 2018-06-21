@@ -74,7 +74,6 @@ export const withGetUserMedia = (HOCProps = {}) => Component => {
     }
 
     handleDeniedPermissions (stream) {
-      debugger
       this.setState({ permitted: false })
     }
 
