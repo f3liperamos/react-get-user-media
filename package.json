@@ -1,6 +1,6 @@
 {
   "name": "react-get-user-media",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A high order component that exposes some functions related to navigator.mediaDevices",
   "main": "src/index.js",
   "module": "dist/react-get-user-media.js",
@@ -18,7 +18,7 @@
     "getUserMedia"
   ],
   "author": "Felipe Ramos <f3liperamos@hotmail.com>",
-  "license": "ISC",
+  "license": "WTFPL",
   "files": [
     "dist"
   ],
