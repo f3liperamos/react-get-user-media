@@ -10,7 +10,7 @@ export default {
     exports: 'named',
     sourcemap: true
   },
-  external: ['react'],
+  external: ['react', 'webrtc-adapter', 'audio-recorder-polyfill'],
   plugins: [
     nodeResolve({
       customResolveOptions: {

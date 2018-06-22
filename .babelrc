@@ -1,4 +1,3 @@
 {
-  "presets": ["react"],
-  "plugins": ["external-helpers"]
+  "presets": ["react"]
 }
