@@ -1,18 +1,27 @@
 {
   "name": "react-get-user-media",
   "version": "0.1.5",
-  "description": "",
+  "description": "A high order component that exposes some functions related to navigator.mediaDevices",
   "main": "src/index.js",
   "module": "dist/react-get-user-media.js",
   "scripts": {
     "debug": "NODE_PATH=./ parcel samples.html --out-dir debug",
     "test": "NODE_PATH=./ jest --coverage",
     "build": "rollup -c",
-    "prepublishOnly": "NODE_ENV=production npm run build"
+    "prepublishOnly": "NODE_ENV=production npm run clean && npm run lint && npm run build",
+    "clean": "rimraf dist",
+    "lint": "standard"
   },
-  "keywords": [],
-  "author": "f3liperamos",
+  "keywords": [
+    "react",
+    "webrtc-adapter",
+    "getUserMedia"
+  ],
+  "author": "Felipe Ramos <f3liperamos@hotmail.com>",
   "license": "ISC",
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "react": "^15.0.0-0 || ^16.0.0-0"
   },
@@ -22,7 +31,6 @@
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -30,6 +38,7 @@
     "parcel-bundler": "^1.9.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "rimraf": "^2.6.2",
     "rollup": "^0.61.1",
     "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-commonjs": "^9.1.3",
@@ -41,7 +50,10 @@
   "standard": {
     "globals": [
       "atob",
-      "Blob"
+      "Blob",
+      "test",
+      "expect",
+      "describe"
     ]
   },
   "jest": {

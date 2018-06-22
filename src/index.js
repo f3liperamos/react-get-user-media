@@ -49,8 +49,7 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
 
     registerElements () {
       if (HOCProps.streamElementId) {
-        console.log(window);
-
+        console.log(window)
 
         this.streamElementId = document.getElementById(HOCProps.streamElementId)
         this.streamElementId.setAttribute('autoPlay', true)
@@ -171,4 +170,4 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
 
 withGetUserMedia.version = React.version
 
-module.exports =  { withGetUserMedia }
+module.exports = { withGetUserMedia }
