@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   missingElement (element) {
     console.error(`@withGetUserMedia: Missing ID on ${element} tag`)
   },

@@ -1,4 +1,4 @@
-export default function dataURLToBlob (dataURL) {
+module.exports = function dataURLToBlob (dataURL) {
   const byteString = atob(dataURL.split(',')[1])
   const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0]
 

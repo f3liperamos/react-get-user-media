@@ -1,7 +1,7 @@
-import 'webrtc-adapter'
-import React from 'react'
-import dataURLToBlob from './dataURLToBlob'
-import consoleErrors from './consoleErrors'
+require('webrtc-adapter')
+const React = require('react')
+const dataURLToBlob = require('./dataURLToBlob')
+const consoleErrors = require('./consoleErrors')
 
 const VIDEO_MIME_TYPE = 'video/webm;codecs=vp8'
 
@@ -12,7 +12,7 @@ const DEFAULT_CONSTRAINTS = {
   }
 }
 
-export const withGetUserMedia = (HOCProps = {}) => Component => {
+const withGetUserMedia = (HOCProps = {}) => Component => {
   class GetUserMedia extends React.Component {
     constructor (props) {
       super(props)
@@ -168,3 +168,7 @@ export const withGetUserMedia = (HOCProps = {}) => Component => {
   GetUserMedia.displayName = `withGetUserMedia(${displayName})`
   return GetUserMedia
 }
+
+withGetUserMedia.version = React.version
+
+module.exports =  { withGetUserMedia }
