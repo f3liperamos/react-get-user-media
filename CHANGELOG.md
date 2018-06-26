@@ -23,3 +23,7 @@
 0.1.12
 
   - If `getUserMedia` is called when `this.asked`, `this.permitted` is true and `this.stream` exists, triggers this.handleGrantedPermissions. (Should we provide an "attachStream" instead? Or expose toggleStreamSrcObject?)
+
+0.1.13
+
+  - If `getUserMedia` is called when `this.asked`, `this.permitted` is true and `this.stream` exists, triggers this.toggleStreamSrcObject (0.1.12 did not went well)
