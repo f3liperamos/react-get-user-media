@@ -18,7 +18,6 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
       super(props)
 
       Object.assign(this, {
-        registerElements: this.registerElements.bind(this),
         stopStream: this.stopStream.bind(this),
         getUserMedia: this.getUserMedia.bind(this),
         takePhoto: this.takePhoto.bind(this),
@@ -34,25 +33,27 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
 
         state: {
           recording: false,
-          permitted: false
+          permitted: false,
+          asked: false
         }
       })
-    }
-
-    componentDidMount () {
-      this.registerElements()
     }
 
     componentWillUnmount () {
       this.stopStream()
     }
 
-    registerElements () {
-      if (HOCProps.streamElementId) {
-        this.streamElementId = document.getElementById(HOCProps.streamElementId)
-        this.streamElementId.setAttribute('autoPlay', true)
-        this.streamElementId.setAttribute('playsInline', true)
-      }
+    get streamElement () {
+      if (this.streamElementNode) return this.streamElementNode
+
+      const streamElementNode = document.getElementById(HOCProps.streamElementId)
+
+      streamElementNode.setAttribute('autoPlay', true)
+      streamElementNode.setAttribute('playsInline', true)
+
+      this.streamElementNode = streamElementNode
+
+      return streamElementNode
     }
 
     stopStream () {
@@ -70,13 +71,16 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
         .catch(this.handleDeniedPermissions)
     }
 
-    handleDeniedPermissions (stream) {
-      this.setState({ permitted: false })
+    handleDeniedPermissions (error) {
+      if (this.state.asked) return
+      this.setState({ permitted: false, asked: true })
+      // TODO: Provide a better way to debug
+      console.error(error)
     }
 
     handleGrantedPermissions (stream) {
       this.stream = stream
-      this.setState({ permitted: true })
+      this.setState({ permitted: true, asked: true })
 
       this.toggleStreamSrcObject()
     }
@@ -122,12 +126,13 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
 
     takePhoto () {
       if (!this.stream) return consoleErrors.missingStream('takePhoto')
+      if (!this.streamElement) return consoleErrors.elementNotFound('streamElementId')
 
-      const { videoWidth, videoHeight } = this.streamElementId
+      const { videoWidth, videoHeight } = this.streamElement
       const canvasElement = document.createElement('canvas')
       canvasElement.height = videoHeight
       canvasElement.width = videoWidth
-      canvasElement.getContext('2d').drawImage(this.streamElementId, 0, 0)
+      canvasElement.getContext('2d').drawImage(this.streamElement, 0, 0)
 
       const photo = canvasElement.toDataURL('image/png')
       const photoBlob = dataURLToBlob(photo)
@@ -136,13 +141,14 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
     }
 
     toggleStreamSrcObject () {
-      if (!this.streamElementId) return consoleErrors.missingElement('streamElementId')
+      if (!HOCProps.streamElementId) return
+      if (!this.streamElement) return consoleErrors.elementNotFound('streamElementId')
 
       if (!this.stream) {
-        this.streamElementId.srcObject = null
+        this.streamElement.srcObject = null
       }
 
-      this.streamElementId.srcObject = this.stream
+      this.streamElement.srcObject = this.stream
     }
 
     render () {
@@ -153,6 +159,7 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
           takePhoto={this.takePhoto}
           startRecording={this.startRecording}
           stopRecording={this.stopRecording}
+          stream={this.stream}
           {...HOCProps}
           {...this.state}
           {...this.props}

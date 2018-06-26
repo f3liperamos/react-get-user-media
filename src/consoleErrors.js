@@ -1,5 +1,5 @@
 module.exports = {
-  missingElement (element) {
+  elementNotFound (element) {
     console.error(`@withGetUserMedia: Missing ID on ${element} tag`)
   },
   missingStream (methodName) {
@@ -9,3 +9,6 @@ Use props.getUserMedia to create one before using this method`
     )
   }
 }
+
+// TODO: Supress errors on production
+// TODO: Enable user to plug your own log

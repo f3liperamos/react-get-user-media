@@ -1,6 +1,6 @@
 {
   "name": "react-get-user-media",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "A high order component that exposes some functions related to navigator.mediaDevices",
   "main": "src/index.js",
   "module": "dist/react-get-user-media.js",
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",

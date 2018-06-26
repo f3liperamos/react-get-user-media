@@ -1,14 +1,14 @@
 import React from 'react'
 import { withGetUserMedia } from '../src/index'
 
-const Snapshot = ({ getUserMedia, permitted, takePhoto, photo }) => {
+const Snapshot = ({ getUserMedia, permitted, takePhoto, photo, stopStream, stream }) => {
   function takePhotoFn () {
-    if (!permitted) return getUserMedia()
+    if (!permitted || !stream) return getUserMedia()
     takePhoto()
   }
 
   function takePhotoText () {
-    if (!permitted) return 'Grant permissions: photo'
+    if (!permitted || !stream) return 'Grant permissions: photo'
     return 'Take Photo'
   }
 
@@ -17,6 +17,7 @@ const Snapshot = ({ getUserMedia, permitted, takePhoto, photo }) => {
       <h1>Snapshot</h1>
       <div className='buttonBox'>
         <button onClick={takePhotoFn}>{takePhotoText()}</button>
+        <button onClick={stopStream}>Stop Stream</button>
       </div>
       <video id='snap' style={{ width: '320px' }} />
       <img src={photo} />
