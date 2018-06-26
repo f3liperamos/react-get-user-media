@@ -65,6 +65,9 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
     }
 
     getUserMedia () {
+      const { asked, permitted } = this.state
+      if (asked && permitted && this.stream) return this.handleGrantedPermissions(this.stream)
+
       navigator.mediaDevices
         .getUserMedia(this.constraints)
         .then(this.handleGrantedPermissions)
