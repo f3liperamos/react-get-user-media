@@ -30,4 +30,4 @@
 
 0.1.14
 
-  - Removing early returns from `get streamElement`, it breaks toggleStreamSrcObject if you browse back to page.
+  - Removing early returns from `get streamElement`, it breaks toggleStreamSrcObject if you browse back. getElementById should be called every time due to "live node" behavior
