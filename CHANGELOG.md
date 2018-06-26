@@ -13,3 +13,9 @@
   - Including a test env into .babelrc preset.
 
   - Renaming `missingElement` no `elementNotFound` on consoleErrors.
+
+0.1.11
+
+  - `StopStream` does not trigger an error anymore if no stream is found
+
+  - Updating dependencies

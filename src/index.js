@@ -57,7 +57,7 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
     }
 
     stopStream () {
-      if (!this.stream) return consoleErrors.missingStream('stopStream')
+      if (!this.stream) return
 
       this.stream.getTracks().forEach(track => track.stop())
       this.stream = null
