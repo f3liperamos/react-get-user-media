@@ -44,14 +44,10 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
     }
 
     get streamElement () {
-      if (this.streamElementNode) return this.streamElementNode
-
       const streamElementNode = document.getElementById(HOCProps.streamElementId)
 
       streamElementNode.setAttribute('autoPlay', true)
       streamElementNode.setAttribute('playsInline', true)
-
-      this.streamElementNode = streamElementNode
 
       return streamElementNode
     }

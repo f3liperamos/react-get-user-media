@@ -27,3 +27,7 @@
 0.1.13
 
   - If `getUserMedia` is called when `this.asked`, `this.permitted` is true and `this.stream` exists, triggers this.toggleStreamSrcObject (0.1.12 did not went well)
+
+0.1.14
+
+  - Removing early returns from `get streamElement`, it breaks toggleStreamSrcObject if you browse back to page.
