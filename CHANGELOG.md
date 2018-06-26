@@ -31,3 +31,7 @@
 0.1.14
 
   - Removing early returns from `get streamElement`, it breaks toggleStreamSrcObject if you browse back. getElementById should be called every time due to "live node" behavior
+
+0.1.15
+
+  - Exposing blob as `recordedBlob` for audio and video

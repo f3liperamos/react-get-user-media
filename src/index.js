@@ -101,12 +101,14 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
       if (!data || data.size <= 0) return
 
       if (data.type !== VIDEO_MIME_TYPE) {
-        return this.setState({ recordedMedia: URL.createObjectURL(data) })
+        const audioBlob = new Blob([data], { type: 'audio/webm' })
+        const recordedMedia = URL.createObjectURL(audioBlob)
+        return this.setState({ recordedMedia, recordedBlob: audioBlob })
       }
 
       const videoBlob = new Blob([data], { type: 'video/webm' })
       const recordedMedia = URL.createObjectURL(videoBlob)
-      return this.setState({ recordedMedia })
+      return this.setState({ recordedMedia, recordedBlob: videoBlob })
     }
 
     startRecording () {
