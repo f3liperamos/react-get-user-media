@@ -9,6 +9,8 @@ I got some ideas and/or solutions based on [react-multimedia-capture](https://gi
 
 That's a work in progress project. Use at your own risk.
 
+**Check Samples folder to see some examples** ~~I swear i'll improve documentation when I have time~~
+
 Roadmap:
 1. Includes documentation (wiki or in README)
 2. More tests to increase coverage
