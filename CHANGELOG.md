@@ -35,3 +35,9 @@
 0.1.15
 
   - Exposing blob as `recordedBlob` for audio and video
+
+0.1.16
+
+  - Adding mimeType checking when audio record is chosen
+
+  - Creating blob with correct mimeTypes

@@ -4,6 +4,7 @@ const dataURLToBlob = require('./dataURLToBlob')
 const consoleErrors = require('./consoleErrors')
 
 const VIDEO_MIME_TYPE = 'video/webm;codecs=vp8'
+const AUDIO_MIME_TYPES = ['audio/webm', 'audio/ogg']
 
 const DEFAULT_CONSTRAINTS = {
   audio: false,
@@ -57,6 +58,7 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
 
       this.stream.getTracks().forEach(track => track.stop())
       this.stream = null
+      this.toggleStreamSrcObject()
       this.setState({ recording: false })
     }
 
@@ -72,43 +74,41 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
 
     handleDeniedPermissions (error) {
       if (this.state.asked) return
-      this.setState({ permitted: false, asked: true })
       // TODO: Provide a better way to debug
       console.error(error)
+      this.setState({ permitted: false, asked: true })
     }
 
     handleGrantedPermissions (stream) {
       this.stream = stream
-      this.setState({ permitted: true, asked: true })
-
       this.toggleStreamSrcObject()
+      this.setState({ permitted: true, asked: true })
+    }
+
+    get audioSupportedType() {
+      return AUDIO_MIME_TYPES.find(type => window.MediaRecorder.isTypeSupported(type))
     }
 
     createMediaRecorder (stream) {
       if (!window.MediaRecorder) {
         const AudioRecorder = require('audio-recorder-polyfill')
+        AudioRecorder.mimeType = 'audio/wav'
         return new AudioRecorder(stream)
       }
 
       if (!this.constraints.video) {
-        return new window.MediaRecorder(stream)
+        return new window.MediaRecorder(stream, { mimeType: this.audioSupportedType })
       }
 
       return new window.MediaRecorder(stream, { mimeType: VIDEO_MIME_TYPE })
     }
 
     createMediaObjectURL ({ data }) {
-      if (!data || data.size <= 0) return
+      if (!data || data.size <= 0 || !data.type) return
 
-      if (data.type !== VIDEO_MIME_TYPE) {
-        const audioBlob = new Blob([data], { type: 'audio/webm' })
-        const recordedMedia = URL.createObjectURL(audioBlob)
-        return this.setState({ recordedMedia, recordedBlob: audioBlob })
-      }
+      const mediaBlob = new Blob([data], { type: data.type })
 
-      const videoBlob = new Blob([data], { type: 'video/webm' })
-      const recordedMedia = URL.createObjectURL(videoBlob)
-      return this.setState({ recordedMedia, recordedBlob: videoBlob })
+      this.setState({ mediaBlob, mediaObjectURL: URL.createObjectURL(mediaBlob) })
     }
 
     startRecording () {
