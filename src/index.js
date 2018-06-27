@@ -85,7 +85,7 @@ const withGetUserMedia = (HOCProps = {}) => Component => {
       this.setState({ permitted: true, asked: true })
     }
 
-    get audioSupportedType() {
+    get audioSupportedType () {
       return AUDIO_MIME_TYPES.find(type => window.MediaRecorder.isTypeSupported(type))
     }
 

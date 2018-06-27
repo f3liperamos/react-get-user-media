@@ -10,7 +10,7 @@
     "build": "rollup -c",
     "prepublishOnly": "NODE_ENV=production npm run clean && npm run lint && npm run build",
     "clean": "rimraf dist",
-    "lint": "standard"
+    "lint": "standard --fix"
   },
   "keywords": [
     "react",
