@@ -14,8 +14,5 @@ That's a work in progress project. Use at your own risk.
 Roadmap:
 1. Includes documentation (wiki or in README)
 2. More tests to increase coverage
-3. Re-check peerDependencies
-4. Includes CI
-5. Change parcel to webpack/rollup to generate a `.min.js`
-6. Includes compatible browsers on READAME.
-7. ???Find a better package name???
+3. Includes CI
+4. Includes compatible browsers on READAME.
