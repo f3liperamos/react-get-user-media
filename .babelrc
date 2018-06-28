@@ -1,8 +1,8 @@
 {
-  "presets": ["react"],
+  "presets": ["react", ["env", { "modules": false, "targets": { "uglify": true } } ]],
   "env": {
     "test": {
-      "presets": ["env"]
+      "presets": ["env", "react"]
     }
   }
 }

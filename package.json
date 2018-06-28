@@ -1,6 +1,6 @@
 {
   "name": "react-get-user-media",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "A high order component that exposes some functions related to navigator.mediaDevices",
   "main": "src/index.js",
   "module": "dist/react-get-user-media.js",
@@ -8,7 +8,8 @@
     "debug": "NODE_PATH=./ parcel samples.html --out-dir debug",
     "test": "NODE_PATH=./ jest --coverage",
     "build": "rollup -c",
-    "prepublishOnly": "NODE_ENV=production npm run clean && npm run lint && npm run build",
+    "minify": "uglifyjs dist/react-get-user-media.js -o dist/react-get-user-media.min.js",
+    "prepublishOnly": "NODE_ENV=production npm run clean && npm run lint && npm run build && npm run minify",
     "clean": "rimraf dist",
     "lint": "standard --fix"
   },
@@ -44,13 +45,14 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "rimraf": "^2.6.2",
-    "rollup": "^0.61.2",
+    "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.5",
     "rollup-plugin-commonjs": "^9.1.3",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^4.0.0",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "uglify-js": "^3.4.2"
   },
   "standard": {
     "globals": [

@@ -41,3 +41,9 @@
   - Adding mimeType checking when audio record is chosen
 
   - Creating blob with correct mimeTypes
+
+0.1.17
+
+  - Rollup now exports module as ES5 instead ES2015
+
+  - Creating a minified file on build
