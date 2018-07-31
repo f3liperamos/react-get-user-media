@@ -2,7 +2,7 @@
   "name": "react-get-user-media",
   "version": "0.1.17",
   "description": "A high order component that exposes some functions related to navigator.mediaDevices",
-  "main": "src/index.js",
+  "main": "dist/react-get-user-media.js",
   "module": "dist/react-get-user-media.js",
   "scripts": {
     "debug": "NODE_PATH=./ parcel samples.html --out-dir debug",
