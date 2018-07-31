@@ -47,3 +47,8 @@
   - Rollup now exports module as ES5 instead ES2015
 
   - Creating a minified file on build
+
+
+0.1.18
+
+  - Changing main from package.json to bundled file, some bundlers aren't getting file from module
