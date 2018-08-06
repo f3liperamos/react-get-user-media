@@ -52,3 +52,9 @@
 0.1.18
 
   - Changing main from package.json to bundled file, some bundlers aren't getting file from module
+
+0.1.19
+
+  - Updating dev dependencies
+
+  - Fixing samples

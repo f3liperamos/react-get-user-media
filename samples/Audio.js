@@ -1,7 +1,7 @@
 import React from 'react'
 import { withGetUserMedia } from '../src/index'
 
-const RecordAudio = ({ getUserMedia, permitted, startRecording, stopRecording, recording, recordedMedia, stopStream, stream }) => {
+const RecordAudio = ({ getUserMedia, permitted, startRecording, stopRecording, recording, mediaObjectURL, stopStream, stream }) => {
   function recordFlow () {
     if (!permitted || !stream) return getUserMedia()
     if (!recording) return startRecording()
@@ -22,7 +22,7 @@ const RecordAudio = ({ getUserMedia, permitted, startRecording, stopRecording, r
         <button onClick={stopStream}>Stop Stream</button>
       </div>
       <h3>RecordStatus: {recording ? 'TRUE' : 'FALSE'}</h3>
-      <audio id='audioId' controls src={recordedMedia} />
+      <audio id='audioId' controls src={mediaObjectURL} />
     </React.Fragment>
   )
 }
